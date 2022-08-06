@@ -33,11 +33,11 @@ function start() {
 				<i class="fal fa-chevron-down down"></i>
 				<p class="bold">OPEN EDITORS</p>
 			</div>
-			<div class="list">
-			</div>
 			<div class="mini-block" aria-label="0">
 				<i class="fal fa-chevron-down down"></i>
 				<p class="bold">EXPLORE-APP</p>
+			</div>
+			<div class="list">
 			</div>
 		</div>
 	`;
@@ -77,11 +77,11 @@ function start() {
 			}
 
 			$(this).attr("aria-label", "1")
-			$(".list").show(0.5)
+			$(".list").slideDown(500)
 		}else{
 			$(this).children(".down").removeClass("down-activate")
 			$(this).attr("aria-label", "2")
-			$(".list").hide(0.5)
+			$(".list").slideUp(500)
 		}
 	})
 	// <button onClick='window.backend.Counter.Increment()'>
