@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -17,38 +18,30 @@ type Folder struct {
 	store *wails.Store
 }
 
-type HttpRes struct {
-    response string
-}
-
-var myClient = &http.Client{Timeout: 10 * time.Second}
-
-func getJson(url string, target interface{}) error {
-    r, err := myClient.Get(url)
-    if err != nil {
-        return err
-    }
-    defer r.Body.Close()
-
-    return json.NewDecoder(r.Body).Decode(target)
-}
-
 
 func findIcon(name string) (string){
-	file := new(HttpRes)
-    getJson("https://raw.githubusercontent.com/lks2007/explorer-desktop-app/main/langage.json", file)
+    url := "https://raw.githubusercontent.com/lks2007/explorer-desktop-app/main/langage.json"
+	meClient := http.Client{
+		Timeout: time.Second * 2, // Timeout after 2 seconds
+	}
 
-    fmt.Println(file.response)
+	req, _ := http.NewRequest(http.MethodGet, url, nil)
+	res, _ := meClient.Do(req)
+	
+	if res.Body != nil {
+		defer res.Body.Close()
+	}
+	body, _ := ioutil.ReadAll(res.Body)
 
-    var res map[string]interface{}
-    json.Unmarshal([]byte(file.response), &res)
+    var response map[string]interface{}
+    json.Unmarshal([]byte(body), &response)
     
     contentType := filepath.Ext(name)
     
-    result := fmt.Sprintf("%v", res[contentType])
+    result := fmt.Sprintf("%v", response[contentType])
 
     if result == "<nil>"{
-        result = fmt.Sprintf("%v", res[name])
+        result = fmt.Sprintf("%v", response[name])
     }
 
     return result

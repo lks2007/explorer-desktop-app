@@ -2,7 +2,7 @@
     ".js": "<i class='fa-brands fa-square-js'></i>",
     ".html": "<i class='fa-brands fa-html5'></i>",
     ".go": "<i class='fa-brands fa-golang'></i>",
-    ".json": "<p>{}</p>",
+    ".json": "<i class='fa-solid fa-database'></i>",
     ".txt": "<i class='fa-solid fa-file-lines'></i>",
     ".gitignore": "<i class='fa-brands fa-git-alt'></i>",
     ".gitmodules": "<i class='fa-brands fa-git-alt'></i>",
