@@ -63,14 +63,15 @@ function start() {
 					}
 					var a = 0;
 					while(i >= a){
-						content+= "<div class='sblock'>"
+						content+= "<tr><td class='center'>"
 						content+=value[a][1]
+						content+="</td><td>"
 						content+=value[a][0]
-						content+= "</div>"
+						content+= "</td></tr>"
 						
 						a++
 					}
-					$(".list").html(content)				
+					$(".list").html(`<table class='sblock'>`+content+"</table>")				
 				})
 			
 			}
