@@ -1,0 +1,19 @@
+{
+    ".js": "<i class='fa-brands fa-square-js'></i>",
+    ".html": "<i class='fa-brands fa-html5'></i>",
+    ".go": "<i class='fa-brands fa-golang'></i>",
+    ".json": "<p>{}</p>",
+    ".txt": "<i class='fa-solid fa-file-lines'></i>",
+    ".gitignore": "<i class='fa-brands fa-git-alt'></i>",
+    ".gitmodules": "<i class='fa-brands fa-git-alt'></i>",
+    ".md": "<i class='fa-brands fa-markdown'></i>",
+    ".css": "<i class='fa-brands fa-css3'></i>",
+    ".jpg": "<i class='fa-solid fa-file-image'></i>",
+    ".png": "<i class='fa-solid fa-file-image'></i>",
+    ".jpeg": "<i class='fa-solid fa-file-image'></i>",
+    ".webp": "<i class='fa-solid fa-file-image'></i>",
+    ".sh": "<i class='fa-solid fa-rectangle-terminal'></i>",
+    "LICENSE": "<i class='fa-solid fa-book-open'></i>",
+    ".py": "<i class='fa-brands fa-python'></i>",
+    ".ttf": "<i class='fa-solid fa-font-case'></i>"
+}

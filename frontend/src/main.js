@@ -1,12 +1,12 @@
 import 'core-js/stable';
 const runtime = require('@wailsapp/runtime');
-import $ from 'jquery';
+import $, { easing } from 'jquery';
 window.jQuery = window.$ = $;
 
 // Main entry point
 function start() {
 
-	// var mystore = runtime.Store.New('Counter');
+	var mystore = runtime.Store.New('Folder');
 
 	// Ensure the default app div is 100% wide/high
 	var app = document.getElementById('app');
@@ -23,13 +23,65 @@ function start() {
 			<div class="block">
 				<i class="fal fa-search"></i>
 			</div>
-		</nav
+		</nav>
+		<div class="explorer">
+			<div class="short-block">
+				<p class="title">Explorer</p>
+				<i class="fal fa-ellipsis-h ft-up btn"></i>
+			</div>
+			<div class="mini-block" aria-label="0">
+				<i class="fal fa-chevron-down down"></i>
+				<p class="bold">OPEN EDITORS</p>
+			</div>
+			<div class="list">
+			</div>
+			<div class="mini-block" aria-label="0">
+				<i class="fal fa-chevron-down down"></i>
+				<p class="bold">EXPLORE-APP</p>
+			</div>
+		</div>
 	`;
 
 
 	$(".block").click(function() {
 		$(".active").removeClass('active')
 		$(this).addClass('active')
+	})
+	
+
+	$(".mini-block").click(function(){
+		if (($(this).attr("aria-label") === "0") || ($(this).attr("aria-label") === "2")){
+			$(this).children(".down").addClass("down-activate")
+
+			if ($(this).attr("aria-label") === "0"){
+				window.backend.Folder.GetFolder()
+				.then( value => { 
+					var content ="";
+					var i;
+					for(i in value);{
+						i=i					
+					}
+					var a = 0;
+					while(i >= a){
+						content+= "<div class='sblock'>"
+						content+=value[a][1]
+						content+=value[a][0]
+						content+= "</div>"
+						
+						a++
+					}
+					$(".list").html(content)				
+				})
+			
+			}
+
+			$(this).attr("aria-label", "1")
+			$(".list").show(0.5)
+		}else{
+			$(this).children(".down").removeClass("down-activate")
+			$(this).attr("aria-label", "2")
+			$(".list").hide(0.5)
+		}
 	})
 	// <button onClick='window.backend.Counter.Increment()'>
 	// 	Increment Counter
