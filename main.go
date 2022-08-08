@@ -12,10 +12,6 @@ var js string
 //go:embed frontend/build/main.css
 var css string
 
-func initialize() {
-  
-}
-
 func main() {
   app := wails.CreateApp(&wails.AppConfig{
     Width:  1366,
